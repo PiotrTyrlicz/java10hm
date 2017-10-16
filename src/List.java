@@ -7,6 +7,8 @@ public class List {
     int suma, max, min;
     boolean status = true;  //
 
+    StringBuilder stringBuilder = new StringBuilder();
+
     public void dodawanie() {
         do {
             System.out.println("Podaj dodatnia liczbe");
@@ -22,7 +24,7 @@ public class List {
         } while (status);
     }
 
-    public void najmniejszaINajwiekszaLiczba() {
+    public void pokazSkrajneWartosciISume() {
         try {
             max = lista.get(0);
             min = lista.get(0);
@@ -33,16 +35,25 @@ public class List {
                 if (lista.get(i) > max) max = lista.get(i);
                 pomocnicza = lista.get(i);
                 suma += pomocnicza;
+                stringBuilder.append(lista.get(i) + "+");
 
             }
             System.out.println("Najmmiejsza: " + min);
             System.out.println("Najwieksza: " + max);
             System.out.println("Suma: " + suma);
+
+            String dodawanie = stringBuilder.substring(0, stringBuilder.length() - 1);
+            System.out.println(dodawanie + "=" + suma);
+
         } catch (IndexOutOfBoundsException e){
             System.out.println("Brak liczb dodatnich w liscie");
         }
     }
 
-
+    public void wypiszWOdwrotnejKolejnosci(){
+        for(int i=lista.size()-1; i>=0; i--){
+            System.out.println(lista.get(i));
+        }
+    }
 
 }
